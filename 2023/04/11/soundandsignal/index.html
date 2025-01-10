@@ -1,0 +1,576 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>声音与信号 | 本杰明的博客</title><meta name="keywords" content="多媒体技术"><meta name="author" content="Benjamin Li"><meta name="copyright" content="Benjamin Li"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="声音与信号"><meta name="application-name" content="声音与信号"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="声音与信号"><meta property="og:url" content="http://timewaster43.github.io/2023/04/11/soundandsignal/index.html"><meta property="og:site_name" content="本杰明的博客"><meta property="og:description" content="模拟信号和数字信号区别和定义模拟信号就是我们直接说话时的声波，包括黑胶唱片播放出来的声音也是。而数字信号则是模拟信号转换成的1和0组成的数字。模拟信号能够最大限度还原声音，但是在传输上有欠缺。比如说如果在传输时直接传输模拟信号就会导致因为收到各种干扰而失真。相反，数字信号虽然不能像模拟信号一样最大限"><meta property="og:locale" content="en"><meta property="og:image" content="https://n.sinaimg.cn/sinacn20111/574/w1920h1054/20190217/0b9b-htacqww0463726.jpg"><meta property="article:author" content="Benjamin Li"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://n.sinaimg.cn/sinacn20111/574/w1920h1054/20190217/0b9b-htacqww0463726.jpg"><meta name="description" content="模拟信号和数字信号区别和定义模拟信号就是我们直接说话时的声波，包括黑胶唱片播放出来的声音也是。而数字信号则是模拟信号转换成的1和0组成的数字。模拟信号能够最大限度还原声音，但是在传输上有欠缺。比如说如果在传输时直接传输模拟信号就会导致因为收到各种干扰而失真。相反，数字信号虽然不能像模拟信号一样最大限"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://timewaster43.github.io/2023/04/11/soundandsignal/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: undefined,
+  diytitle: undefined,
+  LA51: undefined,
+  greetingBox: {"enable":true,"default":"你是这个👍","list":[{"greeting":"早上好哇👋","startTime":7,"endTime":9},{"greeting":"上午好👋,状态很好，喝杯咖啡～","startTime":10,"endTime":11},{"greeting":"中午潜潜睡一下吧","startTime":12,"endTime":14},{"greeting":"下午好！","startTime":15,"endTime":18},{"greeting":"晚上去吃点好的","startTime":19,"endTime":19},{"greeting":"晚上好👋","startTime":20,"endTime":22},{"greeting":"睡觉了💤","startTime":23,"endTime":6}]},
+  twikooEnvId: 'https://twikoo-comment-63rf8p78w-timewaster.vercel.app/',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: {"mode":"api","api":"https://img2color-go.vercel.app/api?img=","cover_change":true},
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🔨 设计开发一条龙","🎞️ 高效出片","📷 捕捉美好瞬间","🧱 团队小组发动机"]},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"Author: Benjamin Li","link":"Link: ","source":"Source: 本杰明的博客","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.","copySuccess":"Copy success, copy and reprint please mark the address of this article"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '本杰明的博客',
+  title: '声音与信号',
+  postAI: '',
+  pageFillDescription: '模拟信号和数字信号, 区别和定义, 模拟信号和数字信号的转换, 采样率, 比特深度, 16bit和24bit, 32bit float, 数字音频, 音频压缩, 各种常见的音频格式, MP3格式, AAC格式, WAV格式, M4A格式, 不同格式与MP3的对比, 对比MP3与AAC, 对比MP3与WAV, 对比MP3与M4A, 索引模拟信号和数字信号区别和定义模拟信号就是我们直接说话时的声波包括黑胶唱片播放出来的声音也是而数字信号则是模拟信号转换成的和组成的数字模拟信号能够最大限度还原声音但是在传输上有欠缺比如说如果在传输时直接传输模拟信号就会导致因为收到各种干扰而失真相反数字信号虽然不能像模拟信号一样最大限度还原声波但是可以最大限度保证传输的准确性模拟信号和数字信号的转换我们在测量电压的时候会发现电压的变化是连续的而数值变化是离散的我们在输入电压到测量仪器的时候会经过一个模块叫做也就是模拟数字转换器模数转换器模拟信号是平滑连续的比如到之间只有无数个值但是数字信号是离散的以下面这张图为例到之间就只有一个值那么我们想要把模拟信号转换成数字信号只要把模拟信号音频量化切分成若干等份再将每一等份用二进制数字表示出来就可以了我们现在在这个声波的最低值到最高值之间划了五次在前面有一个采样条采样条上有五个采样点采样点的原理就是比较输入值和当前的参考值如果输入值大于等于当前参考值就输出反之输出当我们开始播放这段音频的时候采样条就往右比如现在采样条在的位置对应的是那么采样条上面的五个采样点从上往下分别输出因为此时输入的值是第一个采样点的参考值是所以输出第二个采样点的参考值是所以输出第三个采样点的参考值是所以输出第四个采样点的参考值是所以输出第五个采样点的参考值是所以输出如果是在的时候采样此时的输入数值大概是因为所以只有最下面的采样点输出而倒数第二个采样点则输出因此的数值是以此类推最后我们可以得到一串二进制数字这串数字就是这段声波的数字信号但是现在得到的每一组二进制数字如都只能代表一个大概的范围比如有一个问题就是的数值和的数值在图表上其实并不一样但是转换成数字信号之后我们会发现两个竟然是一样的造成这个的原因就是我们的采样点太少了如果多一些采样点输出的数字信号才会更加的准确另外我们现在是每秒采样一次如果说我们每秒采样的次数提升那么转换之后的数字信号就越接近模拟信号失真的情况就越少这种方法就叫做并联比较型也是所有比较器里面速度最快的采样率如果使用过等软件的读者可能会对采样率这个词比较熟悉简单了说采样率就是一秒内对声音采样多少次也叫采样频率在上面的例子中采样率就是但是在我们日常生活中肯定是不行的基本来说现在最常见的两种采样率分别是和他们分别代表的是一秒内对声音采样次和次拓展一个知识根据奈奎斯特香农采样定理由样值序列无失真恢复原信号的条件是为了满足抽样定理要求模拟信号的频谱限制在之内为采样频率为模拟信号的最高频率也就是说信号的频率必须小于不等于采样率的一半比如的采样率能采集以下频率的声音为此在抽样之前先设置一个前置低通滤波器将模拟信号的带宽限制在以下如果前置低通滤波器特性不良或者抽样频率过低都会产生折叠噪声比特深度计算机一直以来都是以二进制也就是和组成和储存的具体到数据存储时计算机里的数据都是以字节为单位的而一个字节占用位我们常见的一些单位如等与字节和位之间的关系是比如一种图片格式支持种颜色那么它的比特深度也叫位深就是也就是那么这种颜色用二进制表示就是到数字音频也是一样的还是以这个图为例我们刚刚讲过了采样条有个采样点那么这里的位深就是约为我们常见的比特位深有等等在电子图像中我们知道一种格式所支持的颜色越多图片颜色变化时就会越细腻变化越顺畅这里以图像的不同比特深度举个例子这三个其实是同一个图片文件但是在解析的时候使用了不同的比特位深所以呈现的效果也不同在音频中也是一样的音频的比特位深越多理论上来说层次感越强对应的文件大小就越大和就是个采样档位可以采样个不同档位的电平对应的动态范围就是在录音的过程中为峰值超过就开始削波失真的动态范围就是的峰值往下到也是差不多的它拥有个采样档位相比起的个档位就更精准在音质上的提升也是很大的所计算出来的动态范围就是就是到的有效采样范围其实在日常生活中如果是单纯的唱歌或者普通的录音我们用的最多的就是如果是大型的交响乐团有多种不同的乐器并且各种乐器有不同的特点也是足够的但是近几年就有很多的厂商推出根据上面所说的和也是一样的道理它就拥有个采样档次这个是我们目前来说几乎永远不会用到的所以我不讲注意录音录音是由的分辨率加上的动态范围记录的有效采样范围是到的有效采样范围是的上限不是而是它的动态范围也就变成了到和都是全部数字代表不同的组合数值跟和都不同但是是科学计数法它的组成是第一位代表数值的正负接着的八位是指数最后位是尾数现在大部分的音频处理软件应该都是可以读取文件的有一些软件在第一次读取时大于的信号可能会被削波导致失真因为有的动态范围我们可以录制一些超过的音频信号然后再软件中调整它的增益使其降到以下但是不失真注意的录制必须要装载的声卡支持的转换如果声卡不支持在软件调也是没用的数字音频音频压缩音频压缩原理是指利用一些算法和技术将音频文件的大小减小以便于存储和传输音频压缩可以分为无损压缩和有损压缩两种无损压缩是指在压缩过程中不会丢失任何音频信息可以完全恢复原始音频信号无损压缩的优点是保证了音质的完整性适合对音质要求高的场合如专业录音或高保真音乐无损压缩的缺点是压缩率较低文件大小仍然较大占用更多的存储空间和带宽常见的无损压缩格式有等有损压缩是指在压缩过程中会丢失一些音频信息无法完全恢复原始音频信号有损压缩的优点是压缩率较高文件大小较小节省了存储空间和带宽有损压缩的缺点是降低了音质可能会产生一些听觉上的失真或噪声适合对音质要求不高的场合如网络流媒体或移动设备常见的有损压缩格式有等各种常见的音频格式一种有损压缩格式能够大幅度降低音频数据量同时保持较高的音质一种有损压缩格式由多家公司共同开发旨在取代格式能够大幅度降低音频数据量同时保持较高的音质一种有损压缩格式由基金会开发适用于网络上低延迟的即时声音传输一种无损压缩格式通常用于存储原始的音频数据音质很好但文件很大一种无损压缩格式可以保持音频数据的完整性但比节省一半左右的空间一种无损压缩格式由苹果公司开发主要用于和等设备一种无损压缩格式由中国人开发主要用于音乐存档和发烧友一种有损压缩格式由微软公司开发主要用于和等设备一种有损压缩格式由基金会开发是一种开源和免费的格式主要用于网络流媒体和游戏音效一种有损压缩格式由杜比实验室开发主要用于播放机和数字电视等设备一种有损压缩格式由开发主要用于语音录制和移动电话等设备等一系列有损压缩格式由开发主要用于语音通信和等场景格式是一种有损压缩的音频格式也是最常见的音频格式之一它可以将原始的音频数据压缩到很小的文件大小但是会牺牲一些高频部分的音质的优点是兼容性好支持多种设备和播放器缺点是音质不如无损格式是标准的一部分是一个国际组织制定了多种视频和音频压缩标准标准包括等其中和定义了三种音频编解码方案分别为就是或的音频编解码方案采用了感知音频编码这一失真算法这种算法利用了人耳对声音的感知特性去掉了人耳听不到或听不清的声音部分从而达到压缩的目的可以根据不同的比特率来调整压缩比和音质比特率越高压缩比越低音质越好反之亦然常见的比特率有等文件由多个帧组成每个帧都包含一个帧头和一个声音数据帧头记录了该帧的一些参数信息如采样率比特率声道数等声音数据是经过编码后的压缩数据需要通过解码器还原成原始的音频信号每个帧播放时间是秒其长度随位率的不同而不等文件还可以包含一些额外的信息如歌手标题专辑年代风格等这些信息被称为标签可以分为两个版本和标签位于文件末尾的固定字节以字符开头记录了固定格式的信息标签位于文件开头长度可变记录了更多种类和更详细的信息格式是一种有损压缩的音频格式也是标准的一部分它是的后继者相同码率下比有更好的音质和更高的压缩效率的优点是音质好支持多声道和变速编码缺点是兼容性不如是由杜比实验室索尼等公司共同开发的目的是取代格式它出现于年基于的音频编码技术年标准出现后重新集成了其特性加入了技术和技术为了区别于传统的又称为采用了感知音频编码这一失真算法这种算法利用了人耳对声音的感知特性去掉了人耳听不到或听不清的声音部分从而达到压缩的目的可以根据不同的比特率来调整压缩比和音质比特率越高压缩比越低音质越好反之亦然常见的比特率有等文件由多个帧组成每个帧都包含一个帧头和一个声音数据帧头记录了该帧的一些参数信息如采样率比特率声道数等声音数据是经过编码后的压缩数据需要通过解码器还原成原始的音频信号每个帧播放时间是秒其长度随位率的不同而不等文件还可以包含一些额外的信息如歌手标题专辑年代风格等这些信息被称为标签可以分为两个版本和标签位于文件末尾的固定字节以字符开头记录了固定格式的信息标签位于文件开头长度可变记录了更多种类和更详细的信息格式格式是一种存储声音波形的数字音频格式是由微软公司和联合设计的可用于等多种操作系统格式的特点是能够真实记录自然声波形不进行数据压缩保证声音不失真但是文件体积较大格式遵循资源互换文件格式的规范由若干个块构成每个块包含块标识块长度和数据等三部分格式支持多种音频位数采样频率和声道也支持多种压缩算法如等格式不一定只用于音频文件也可以用于其他需要使用到振幅和时间的形式的应用如电路模拟广播等格式格式是一种由苹果公司开发的数字音频格式是的一种变体专门用于存储音频数据格式通常使用编码也可以使用编码格式的特点是格式是一种有损或无损的音频格式取决于使用的编码方式编码是一种有损的音频压缩技术可以在较低的位率下保持较高的音质比更加高效编码是一种无损的音频压缩技术可以在不损失音质的情况下减少文件大小比或更加节省空间格式是一种兼容性较好的音频格式可以在多种操作系统和设备上播放如等格式也可以被多种音频编辑软件和播放器支持如等格式是一种支持元数据和章节标记的音频格式可以在文件中嵌入歌曲信息如标题艺术家专辑等格式也可以在文件中添加章节标记用于标识不同的部分或段落方便用户跳转和导航不同格式与的对比对比与兼容性方面格式不如格式因为格式推出的时间早已经成为了音乐传播的标准而格式相对较新可能在某些设备和软件上无法播放格式也有更多的制作和传播工具而格式相对较少另外格式的专利已经过期而格式仍然需要支付授权费用所以如果你想要更好的兼容性和便利性你可以选择格式如果你想要更好的音质和压缩效率你可以选择格式在音质和声道方面超越的原因有以下几点采用了更先进的感知音频编码算法可以更有效地去除人耳听不到或听不清的声音部分从而提高压缩效率和音质支持更多种采样率和比特率可以根据不同的音频内容和需求进行灵活的调整而只支持固定的几种采样率和比特率支持更多种声道模式最多可以支持个音轨和个低频音轨可以实现或更高的多声道效果而只支持单声道和立体声两种模式支持更高的采样精度最高可以达到而最高只能达到这意味着可以保留更多的音频细节和动态范围与规格对比比特率最高超过采样率最高最高声道数六声道两声道采样精度最高最高对比与格式是无损音乐的一种能够真实记录自然声波形不进行数据压缩保证声音不失真但是文件体积较大格式是有损音乐的一种利用人耳对高频声音信号不敏感的特性对音频进行编码去掉了某些部分从而节省了空间但是音质有所下降格式遵循资源互换文件格式的规范由若干个块构成每个块包含块标识块长度和数据等三部分格式遵循动态影像专家组的规范由若干个帧构成每个帧包含帧头边信息和数据等三部分格式支持多种音频位数采样频率和声道也支持多种压缩算法如等格式只支持一种压缩算法即或格式通常用于录音室录音和专业音频项目格式通常用于网络传播和移动播放设备储存对比与音质格式使用编码时通常可以在相同的位率下提供比更好的音质因为编码更加先进和高效格式使用编码时可以提供无损的音质而则是一种有损的音频压缩技术文件大小格式使用编码时通常可以在相同的音质下提供比更小的文件大小因为编码更加节省空间格式使用编码时通常会产生比更大的文件大小因为编码不会丢失任何数据兼容性格式是一种广泛使用和支持的音频格式几乎所有的操作系统和设备都可以播放文件格式虽然也有较好的兼容性但是在一些老旧或者特定的设备上可能无法播放或者需要转换功能格式支持元数据和章节标记可以在文件中嵌入歌曲信息和标识不同的部分格式也支持元数据但是不支持章节标记索引因为不记得具体链接了只记得大的网站知乎专栏百度知道维基百科哔哩哔哩',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-23 15:06:20',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://s2.loli.net/2023/06/09/VSPi13Nh7nQrOHK.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.techny.site/" title="Techny"><img class="back-menu-item-icon" src="https://www.techny.site/img/logo.webp" alt="Techny"/><span class="back-menu-item-text">Techny</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">本杰明的博客</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 碎碎念</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.askbox.ink/h5/uu/MLD3P2VD?uid=c80d8bce6583594564f817bc7d26b9b7"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 提问箱</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://s2.loli.net/2023/06/09/eFHIZ1NpDhoAUnb.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://s2.loli.net/2023/06/09/eFHIZ1NpDhoAUnb.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://s2.loli.net/2023/06/22/w4eClpX7cPqYQfD.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://s2.loli.net/2023/06/22/w4eClpX7cPqYQfD.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> Newest Comments</span></div><div class="aside-list"><span>loading...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">January 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">July 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">April 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">March 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/01/"><span class="card-archive-list-date">January 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">December 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E7%90%86%E8%AE%BA/" itemprop="url">技术理论</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>多媒体技术</span></a></span></div></div><h1 class="post-title" itemprop="name headline">声音与信号</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2023-04-11T14:10:00.000Z" title="Created 2023-04-11 22:10:00">2023-04-11</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-04-23T07:06:20.565Z" title="Updated 2024-04-23 15:06:20">2024-04-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为广州"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>广州</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://n.sinaimg.cn/sinacn20111/574/w1920h1054/20190217/0b9b-htacqww0463726.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://timewaster43.github.io/2023/04/11/soundandsignal/"><header><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E7%90%86%E8%AE%BA/" itemprop="url">技术理论</a><a href="/tags/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/" tabindex="-1" itemprop="url">多媒体技术</a><h1 id="CrawlerTitle" itemprop="name headline">声音与信号</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Benjamin Li</span><time itemprop="dateCreated datePublished" datetime="2023-04-11T14:10:00.000Z" title="Created 2023-04-11 22:10:00">2023-04-11</time><time itemprop="dateCreated datePublished" datetime="2024-04-23T07:06:20.565Z" title="Updated 2024-04-23 15:06:20">2024-04-23</time></header><h1 id="模拟信号和数字信号"><a href="#模拟信号和数字信号" class="headerlink" title="模拟信号和数字信号"></a>模拟信号和数字信号</h1><h2 id="区别和定义"><a href="#区别和定义" class="headerlink" title="区别和定义"></a>区别和定义</h2><p>模拟信号就是我们直接说话时的声波，包括黑胶唱片播放出来的声音也是。而数字信号则是模拟信号转换成的1和0组成的数字。模拟信号能够最大限度还原声音，但是在传输上有欠缺。比如说如果在传输时直接传输模拟信号就会导致因为收到各种干扰而失真。相反，数字信号虽然不能像模拟信号一样最大限度还原声波，但是可以最大限度保证传输的准确性。</p>
+<h2 id="模拟信号和数字信号的转换"><a href="#模拟信号和数字信号的转换" class="headerlink" title="模拟信号和数字信号的转换"></a>模拟信号和数字信号的转换</h2><p>我们在测量电压的时候，会发现电压的变化是连续的，而数值变化是离散的。我们在输入电压到测量仪器的时候，会经过一个模块，叫做ADC（Analog to Digit Convertor），也就是模拟-数字转换器（模数转换器）。</p>
+<p>模拟信号是平滑连续的，比如0s到1s之间只有无数个值。但是数字信号是离散的。以下面这张图为例，0s到1s之间就只有一个值。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2023/06/09/Vwo3dabCTlh5yrH.png"></p>
+<p>那么我们想要把模拟信号转换成数字信号只要把模拟信号音频量化切分成若干等份，再将每一等份用二进制数字表示出来就可以了。</p>
+<p>我们现在在这个声波的最低值到最高值之间划了五次。在0s前面有一个采样条，采样条上有五个采样点，采样点的原理就是比较输入值和当前的参考值，如果输入值大于等于当前参考值就输出1，反之输出0。当我们开始播放这段音频的时候，采样条就往右。比如现在采样条在2s的位置，对应的是3，那么采样条上面的五个采样点从上往下分别输出00111。因为此时输入的值是3：</p>
+<p>第一个采样点的参考值是5，5&gt;3，所以输出0；第二个采样点的参考值是4，4&gt;3，所以输出0；第三个采样点的参考值是3，3&#x3D;3，所以输出1；第四个采样点的参考值是2，2&lt;3，所以输出1；第五个采样点的参考值是1，1&lt;3，所以输出1。</p>
+<p>如果是在1s的时候采样，此时的输入数值大概是1.5，因为1&lt; <strong>1.5</strong> &lt;2，所以只有最下面的采样点输出1，而倒数第二个采样点则输出0。因此1s的数值是00001。</p>
+<p>以此类推，最后我们可以得到一串二进制数字：</p>
+<p>00001 00001 01111 11111 11111 01111 00001 00001 00001 00001 01111 11111 11111 01111 00001 00001</p>
+<p>这串数字就是这段声波的数字信号。但是现在得到的每一组二进制数字（如00001）都只能代表一个大概的范围，比如1&lt; <strong>00001</strong> &lt;2。有一个问题就是0s的数值和1s的数值在图表上其实并不一样，但是转换成数字信号之后我们会发现两个竟然是一样的。造成这个的原因就是我们的采样点太少了。如果多一些采样点，输出的数字信号才会更加的准确。</p>
+<p>另外，我们现在是每秒采样一次。如果说我们每秒采样的次数提升，那么转换之后的数字信号就越接近模拟信号，失真的情况就越少。</p>
+<p>这种方法就叫做<strong>并联比较型AD</strong>，也是所有比较器里面速度最快的。</p>
+<h1 id="采样率"><a href="#采样率" class="headerlink" title="采样率"></a>采样率</h1><p>如果使用过Cubase，Audition等软件的读者可能会对采样率这个词比较熟悉。简单了说采样率就是一秒内对声音采样多少次，也叫采样频率。在上面的例子中，采样率就是1Hz。但是1Hz在我们日常生活中肯定是不行的。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2023/06/09/NGjCyuFdXVEZng2.png" style="zoom:80%;" />
+
+<p>基本来说，现在最常见的两种采样率分别是44.1kHz和48kHz，他们分别代表的是一秒内对声音采样44100次和48000次。</p>
+<p>拓展一个知识：根据<strong>奈奎斯特-香农采样定理</strong>，由样值序列无失真恢复原信号的条件是  f<sub>s</sub> ≥2f<sub>h</sub> ，为了满足抽样定理，要求模拟信号的频谱限制在0~f<sub>h</sub> 之内（f<sub>s</sub>为采样频率，f<sub>h</sub>为模拟信号的最高频率）。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2023/06/09/Viu5X83NPZlysTj.png"></p>
+<p>也就是说，信号的频率必须小于不等于采样率的一半。比如，44.1kHz的采样率能采集22.05kHz以下频率的声音。为此，在抽样之前，先设置一个前置低通滤波器，将模拟信号的带宽限制在f<sub>h</sub>以下，如果前置低通滤波器特性不良或者抽样频率过低都会产生折叠噪声。</p>
+<h1 id="比特深度"><a href="#比特深度" class="headerlink" title="比特深度"></a>比特深度</h1><p>计算机一直以来都是以二进制，也就是1和0组成和储存的。具体到数据存储时，计算机里的数据都是以字节（Byte）为单位的，而一个字节占用8位。我们常见的一些单位，如GB、MB、KB等与字节和位之间的关系是：</p>
+<p>1GB&#x3D;1024MB；1MB&#x3D;1024KB；1KB&#x3D;1024Byte；1Byte&#x3D;8bit</p>
+<p>比如一种图片格式支持256种颜色，那么它的比特深度（也叫位深）就是8bit，也就是256&#x3D;2<sup>8</sup> ，那么这256种颜色用二进制表示就是00000000到11111111。</p>
+<p>数字音频也是一样的。</p>
+<p>还是以这个图为例，我们刚刚讲过了，采样条有5个采样点，那么这里的位深就是5（约为2.32183bit）。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2023/06/09/Vwo3dabCTlh5yrH.png"></p>
+<p>我们常见的比特位深有16bit，24bit，32bit float等等……</p>
+<p>在电子图像中，我们知道：一种格式所支持的颜色越多，图片颜色变化时就会越细腻，变化越顺畅。</p>
+<p>这里以图像的不同比特深度举个例子。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2023/06/09/x1H9uoYsSOMJQmp.png"></p>
+<p>这三个其实是同一个图片文件，但是在解析的时候使用了不同的比特位深，所以呈现的效果也不同。在音频中也是一样的，音频的比特位深越多，理论上来说层次感越强，对应的文件大小就越大。</p>
+<h2 id="16bit和24bit"><a href="#16bit和24bit" class="headerlink" title="16bit和24bit"></a>16bit和24bit</h2><p>16bit就是2<sup>16</sup> &#x3D;65536个采样档位，可以采样65536个不同档位的电平。16bit对应的动态范围就是20×log(65536)≈96dB。在录音的过程中，0dB为峰值，超过0dB就开始削波失真。96dB的动态范围就是0dB的峰值往下到-96dB。</p>
+<p>24bit也是差不多的，它拥有2<sup>24</sup> &#x3D;16777216个采样档位。相比起16bit的65536个档位，24bit就更精准，在音质上的提升也是很大的。24bit所计算出来的动态范围就是20×log(16777216)≈144dB，就是0dB到-144dB的有效采样范围。</p>
+<p>其实在日常生活中，如果是单纯的唱歌或者普通的录音，我们用的最多的就是16bit；如果是大型的交响乐团，有多种不同的乐器，并且各种乐器有不同的特点，24bit也是足够的。但是近几年就有很多的厂商推出32bit float。</p>
+<h2 id="32bit-float"><a href="#32bit-float" class="headerlink" title="32bit float"></a>32bit float</h2><p>根据上面所说的16bit和24bit，32bit也是一样的道理，它就拥有2<sup>32</sup> &#x3D;4294967296个采样档次，这个是我们目前来说几乎永远不会用到的，所以我不讲。</p>
+<p><strong>注意！32bit录音≠32bit float录音！</strong></p>
+<p>32bit float是由24bit的分辨率加上8bit的动态范围记录。16bit的有效采样范围是0dB到-96dB；24bit的有效采样范围是0dB-144dB。32bit float的上限不是0dB，而是770dB，它的动态范围也就变成了770dB到-758dB。 16bit和24bit都是全部数字代表不同的组合。32bit float数值跟16bit和24bit都不同。但是32bit float是科学计数法，它的组成是：第一位代表数值的正负，接着的八位是指数，最后23位是尾数。现在大部分的音频处理软件应该都是可以读取32bit float文件的，有一些软件在第一次读取时，大于0dB的信号可能会被削波导致失真。因为32bit float有+770dB的动态范围，我们可以录制一些超过0dB的音频信号，然后再软件中调整它的增益，使其降到0dB以下但是不失真。</p>
+<p><strong>注意：32bit float的录制必须要装载的声卡支持32bit float的AD转换，如果声卡不支持，在软件调也是没用的</strong></p>
+<h1 id="数字音频"><a href="#数字音频" class="headerlink" title="数字音频"></a>数字音频</h1><h2 id="音频压缩"><a href="#音频压缩" class="headerlink" title="音频压缩"></a>音频压缩</h2><p>音频压缩原理是指利用一些算法和技术，将音频文件的大小减小，以便于存储和传输。音频压缩可以分为无损压缩和有损压缩两种：</p>
+<p><strong>无损压缩</strong>是指在压缩过程中不会丢失任何音频信息，可以完全恢复原始音频信号。无损压缩的优点是保证了音质的完整性，适合对音质要求高的场合，如专业录音或高保真音乐。无损压缩的缺点是压缩率较低，文件大小仍然较大，占用更多的存储空间和带宽。常见的无损压缩格式有WAV、FLAC、APE等。</p>
+<p><strong>有损压缩</strong>是指在压缩过程中会丢失一些音频信息，无法完全恢复原始音频信号。有损压缩的优点是压缩率较高，文件大小较小，节省了存储空间和带宽。有损压缩的缺点是降低了音质，可能会产生一些听觉上的失真或噪声，适合对音质要求不高的场合，如网络流媒体或移动设备。常见的有损压缩格式有MP3、AAC、Opus等。</p>
+<h2 id="各种常见的音频格式"><a href="#各种常见的音频格式" class="headerlink" title="各种常见的音频格式"></a>各种常见的音频格式</h2><p><strong>MP3</strong>：一种有损压缩格式，能够大幅度降低音频数据量，同时保持较高的音质。</p>
+<p><strong>AAC</strong>：一种有损压缩格式，由多家公司共同开发，旨在取代MP3格式，能够大幅度降低音频数据量，同时保持较高的音质。</p>
+<p><strong>Opus</strong>：一种有损压缩格式，由Xiph.Org基金会开发，适用于网络上低延迟的即时声音传输。</p>
+<p><strong>WAV</strong>：一种无损压缩格式，通常用于存储原始的音频数据，音质很好，但文件很大。</p>
+<p><strong>FLAC</strong>：一种无损压缩格式，可以保持音频数据的完整性，但比WAV节省一半左右的空间。</p>
+<p><strong>ALAC</strong>：一种无损压缩格式，由苹果公司开发，主要用于iTunes和iPod等设备。</p>
+<p><strong>APE</strong>：一种无损压缩格式，由中国人开发，主要用于音乐存档和发烧友。</p>
+<p><strong>WMA</strong>：一种有损压缩格式，由微软公司开发，主要用于Windows Media Player和Zune等设备。</p>
+<p><strong>OGG</strong>：一种有损压缩格式，由Xiph.Org基金会开发，是一种开源和免费的格式，主要用于网络流媒体和游戏音效。</p>
+<p><strong>AC3</strong>：一种有损压缩格式，由杜比实验室开发，主要用于DVD播放机和数字电视等设备。</p>
+<p><strong>AMR</strong>：一种有损压缩格式，由3GPP开发，主要用于语音录制和移动电话等设备。</p>
+<p><strong>G.711&#x2F;G.722&#x2F;G.723等</strong>：一系列有损压缩格式，由ITU-T开发，主要用于语音通信和VoIP等场景。</p>
+<h3 id="MP3格式"><a href="#MP3格式" class="headerlink" title="MP3格式"></a>MP3格式</h3><p>MP3是一种有损压缩的音频格式，也是最常见的音频格式之一。它可以将原始的音频数据压缩到很小的文件大小，但是会牺牲一些高频部分的音质。MP3的优点是兼容性好，支持多种设备和播放器，缺点是音质不如无损格式。</p>
+<p>MP3是MPEG标准的一部分，MPEG是一个国际组织，制定了多种视频和音频压缩标准。MPEG标准包括MPEG-1、MPEG-2、MPEG-4等，其中MPEG-1和MPEG-2定义了三种音频编解码方案，分别为Layer 1、Layer 2、Layer 3。MP3就是MPEG-1或MPEG-2的Layer 3音频编解码方案。</p>
+<p>MP3采用了感知音频编码（Perceptual Audio Coding）这一失真算法。这种算法利用了人耳对声音的感知特性，去掉了人耳听不到或听不清的声音部分，从而达到压缩的目的。MP3可以根据不同的比特率（Bit Rate）来调整压缩比和音质，比特率越高，压缩比越低，音质越好，反之亦然。MP3常见的比特率有32Kbps、64Kbps、128Kbps、192Kbps、256Kbps、320Kbps等。</p>
+<p>MP3文件由多个帧（Frame）组成，每个帧都包含一个帧头（Frame Header）和一个声音数据（Sound Data）。帧头记录了该帧的一些参数信息，如采样率（Sample Rate）、比特率（Bit Rate）、声道数（Channel Mode）等。声音数据是经过编码后的压缩数据，需要通过解码器还原成原始的音频信号。每个帧播放时间是0.026秒，其长度随位率的不同而不等。</p>
+<p>MP3文件还可以包含一些额外的信息，如歌手、标题、专辑、年代、风格等。这些信息被称为ID3标签（ID3 Tag），可以分为两个版本：ID3v1和ID3v2。ID3v1标签位于文件末尾的固定128字节，以TAG字符开头，记录了固定格式的信息。ID3v2标签位于文件开头，长度可变，记录了更多种类和更详细的信息。</p>
+<h3 id="AAC格式"><a href="#AAC格式" class="headerlink" title="AAC格式"></a>AAC格式</h3><p>AAC是一种有损压缩的音频格式，也是MPEG标准的一部分。它是MP3的后继者，相同码率下比MP3有更好的音质和更高的压缩效率。AAC的优点是音质好，支持多声道和变速编码，缺点是兼容性不如MP3。</p>
+<p>AAC是由Fraunhofer IIS、杜比实验室、AT&amp;T、索尼等公司共同开发的，目的是取代MP3格式。它出现于1997年，基于MPEG-2的音频编码技术。2000年，MPEG-4标准出现后，AAC重新集成了其特性，加入了SBR技术和PS技术，为了区别于传统的MPEG-2 AAC又称为MPEG-4 AAC。</p>
+<p>AAC采用了感知音频编码（Perceptual Audio Coding）这一失真算法。这种算法利用了人耳对声音的感知特性，去掉了人耳听不到或听不清的声音部分，从而达到压缩的目的。AAC可以根据不同的比特率（Bit Rate）来调整压缩比和音质，比特率越高，压缩比越低，音质越好，反之亦然。AAC常见的比特率有32Kbps、64Kbps、128Kbps、192Kbps、256Kbps、320Kbps等。</p>
+<p>AAC文件由多个帧（Frame）组成，每个帧都包含一个帧头（Frame Header）和一个声音数据（Sound Data）。帧头记录了该帧的一些参数信息，如采样率（Sample Rate）、比特率（Bit Rate）、声道数（Channel Mode）等。声音数据是经过编码后的压缩数据，需要通过解码器还原成原始的音频信号。每个帧播放时间是0.023秒，其长度随位率的不同而不等。</p>
+<p>AAC文件还可以包含一些额外的信息，如歌手、标题、专辑、年代、风格等。这些信息被称为ID3标签（ID3 Tag），可以分为两个版本：ID3v1和ID3v2。ID3v1标签位于文件末尾的固定128字节，以TAG字符开头，记录了固定格式的信息。ID3v2标签位于文件开头，长度可变，记录了更多种类和更详细的信息。</p>
+<h3 id="WAV格式"><a href="#WAV格式" class="headerlink" title="WAV格式"></a>WAV格式</h3><p>WAV格式是一种存储声音波形的数字音频格式，是由微软公司和IBM联合设计的，可用于Windows，Macintosh，Linux等多种操作系统。WAV格式的特点是能够真实记录自然声波形，不进行数据压缩，保证声音不失真，但是文件体积较大。WAV格式遵循资源互换文件格式（RIFF）的规范，由若干个块构成，每个块包含块标识、块长度和数据等三部分。WAV格式支持多种音频位数、采样频率和声道，也支持多种压缩算法，如PCM、ADPCM、MP3等。WAV格式不一定只用于音频文件，也可以用于其他需要使用到振幅和时间的形式的应用，如电路模拟、广播等。</p>
+<h3 id="M4A格式"><a href="#M4A格式" class="headerlink" title="M4A格式"></a>M4A格式</h3><p>M4A格式是一种由苹果公司开发的数字音频格式，是MPEG-4 Part 14（MP4）的一种变体，专门用于存储音频数据。M4A格式通常使用AAC（Advanced Audio Coding）编码，也可以使用ALAC（Apple Lossless Audio Codec）编码。M4A格式的特点是：</p>
+<p>- M4A格式是一种有损或无损的音频格式，取决于使用的编码方式。AAC编码是一种有损的音频压缩技术，可以在较低的位率下保持较高的音质，比MP3更加高效。ALAC编码是一种无损的音频压缩技术，可以在不损失音质的情况下减少文件大小，比WAV或AIFF更加节省空间。</p>
+<p>- M4A格式是一种兼容性较好的音频格式，可以在多种操作系统和设备上播放，如Windows，MacOS，iOS，Android等。M4A格式也可以被多种音频编辑软件和播放器支持，如iTunes，VLC，Audacity等。</p>
+<p>- M4A格式是一种支持元数据和章节标记的音频格式，可以在文件中嵌入歌曲信息，如标题，艺术家，专辑等。M4A格式也可以在文件中添加章节标记，用于标识不同的部分或段落，方便用户跳转和导航。</p>
+<h2 id="不同格式与MP3的对比"><a href="#不同格式与MP3的对比" class="headerlink" title="不同格式与MP3的对比"></a>不同格式与MP3的对比</h2><h3 id="对比MP3与AAC"><a href="#对比MP3与AAC" class="headerlink" title="对比MP3与AAC"></a>对比MP3与AAC</h3><p>兼容性方面，AAC格式不如MP3格式，因为MP3格式推出的时间早，已经成为了音乐传播的标准，而AAC格式相对较新，可能在某些设备和软件上无法播放。MP3格式也有更多的制作和传播工具，而AAC格式相对较少。另外，MP3格式的专利已经过期，而AAC格式仍然需要支付授权费用。所以，如果你想要更好的兼容性和便利性，你可以选择MP3格式。如果你想要更好的音质和压缩效率，你可以选择AAC格式。</p>
+<p>AAC在音质和声道方面超越MP3的原因有以下几点：</p>
+<p>AAC采用了更先进的感知音频编码算法，可以更有效地去除人耳听不到或听不清的声音部分，从而提高压缩效率和音质。</p>
+<p>AAC支持更多种采样率和比特率，可以根据不同的音频内容和需求进行灵活的调整，而MP3只支持固定的几种采样率和比特率。</p>
+<p>AAC支持更多种声道模式，最多可以支持48个音轨和15个低频音轨，可以实现5.1或更高的多声道效果，而MP3只支持单声道和立体声两种模式。</p>
+<p>AAC支持更高的采样精度，最高可以达到32bit，而MP3最高只能达到16bit，这意味着AAC可以保留更多的音频细节和动态范围。</p>
+<p>AAC与MP3规格对比比特率：</p>
+<p>AAC - 最高超过400kbps &#x2F; MP3 - 32~320kbps</p>
+<p>采样率：AAC - 最高96kHz &#x2F; MP3 - 最高48kHz</p>
+<p>声道数：AAC - （5.1）六声道 &#x2F; MP3 - 两声道</p>
+<p>采样精度：AAC - 最高32bit &#x2F; MP3 - 最高16bit</p>
+<h3 id="对比MP3与WAV"><a href="#对比MP3与WAV" class="headerlink" title="对比MP3与WAV"></a>对比MP3与WAV</h3><p>WAV格式是无损音乐的一种，能够真实记录自然声波形，不进行数据压缩，保证声音不失真，但是文件体积较大。MP3格式是有损音乐的一种，利用人耳对高频声音信号不敏感的特性，对音频进行编码，去掉了某些部分，从而节省了空间，但是音质有所下降。</p>
+<p>WAV格式遵循资源互换文件格式（RIFF）的规范，由若干个块构成，每个块包含块标识、块长度和数据等三部分。MP3格式遵循动态影像专家组（MPEG）的规范，由若干个帧构成，每个帧包含帧头、边信息和数据等三部分。</p>
+<p>WAV格式支持多种音频位数、采样频率和声道，也支持多种压缩算法，如PCM、ADPCM、MP3等。MP3格式只支持一种压缩算法，即MPEG-1 Layer III或MPEG-2 Layer III。</p>
+<p>WAV格式通常用于录音室录音和专业音频项目。MP3格式通常用于网络传播和移动播放设备储存。</p>
+<h3 id="对比MP3与M4A"><a href="#对比MP3与M4A" class="headerlink" title="对比MP3与M4A"></a>对比MP3与M4A</h3><p>- 音质：M4A格式使用AAC编码时，通常可以在相同的位率下提供比MP3更好的音质，因为AAC编码更加先进和高效 。M4A格式使用ALAC编码时，可以提供无损的音质，而MP3则是一种有损的音频压缩技术  。</p>
+<p>- 文件大小：M4A格式使用AAC编码时，通常可以在相同的音质下提供比MP3更小的文件大小，因为AAC编码更加节省空间 。M4A格式使用ALAC编码时，通常会产生比MP3更大的文件大小，因为ALAC编码不会丢失任何数据 。</p>
+<p>- 兼容性：MP3格式是一种广泛使用和支持的音频格式，几乎所有的操作系统和设备都可以播放MP3文件 。M4A格式虽然也有较好的兼容性，但是在一些老旧或者特定的设备上可能无法播放或者需要转换 。</p>
+<p>- 功能：M4A格式支持元数据和章节标记，可以在文件中嵌入歌曲信息和标识不同的部分 。MP3格式也支持元数据，但是不支持章节标记 。</p>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p>因为不记得具体链接了，只记得大的网站：</p>
+<p><a target="_blank" rel="noopener" href="https://www.csdn.net/">CSDN</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/">知乎专栏</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhidao.baidu.com/">百度知道</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.wikipedia.org/">维基百科WiKipedia</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/">哔哩哔哩Bilibili</a></p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2023/06/08/noTN2lJAcktCGbB.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2023/06/08/noTN2lJAcktCGbB.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Benjamin Li</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://timewaster43.github.io/2023/04/11/soundandsignal/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://timewaster43.github.io/2023/04/11/soundandsignal/')">声音与信号</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://s2.loli.net/2023/06/09/eFHIZ1NpDhoAUnb.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2023/06/09/eFHIZ1NpDhoAUnb.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://s2.loli.net/2023/06/22/w4eClpX7cPqYQfD.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2023/06/22/w4eClpX7cPqYQfD.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://timewaster43.github.io/2023/04/11/soundandsignal/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=声音与信号&amp;url=http://timewaster43.github.io/2023/04/11/soundandsignal/&amp;pic=https://n.sinaimg.cn/sinacn20111/574/w1920h1054/20190217/0b9b-htacqww0463726.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>多媒体技术<span class="tagsPageCount">2</span></a></div></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/28/aboutvpn/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2023/06/09/oqNXDr6tIGMBH1Z.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">虚拟专用网络VPN</div></div></a></div><div class="next-post pull-right"><a href="/2023/07/13/gyradio-mg12/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic1.zhimg.com/v2-b4c6be038b68bdea35bf071bb4bf6988_r.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">2023届广雅广播站调音台使用指南</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/07/13/gyradio-mg12/" title="2023届广雅广播站调音台使用指南"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic1.zhimg.com/v2-b4c6be038b68bdea35bf071bb4bf6988_r.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2023-07-13</div><div class="title">2023届广雅广播站调音台使用指南</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> Comment</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2023/06/08/noTN2lJAcktCGbB.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">一名25fall学生（国际牲）、开发者、咖啡师、摄像师（兼摄影和剪辑）、航拍飞手，想读信息安全/电子电气工程相关专业</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">Benjamin Li</h1><div class="author-info__desc"></div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/time208" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/433838433" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7"><span class="toc-number">1.</span> <span class="toc-text">模拟信号和数字信号</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text">区别和定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.2.</span> <span class="toc-text">模拟信号和数字信号的转换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%87%E6%A0%B7%E7%8E%87"><span class="toc-number">2.</span> <span class="toc-text">采样率</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%94%E7%89%B9%E6%B7%B1%E5%BA%A6"><span class="toc-number">3.</span> <span class="toc-text">比特深度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#16bit%E5%92%8C24bit"><span class="toc-number">3.1.</span> <span class="toc-text">16bit和24bit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#32bit-float"><span class="toc-number">3.2.</span> <span class="toc-text">32bit float</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E9%9F%B3%E9%A2%91"><span class="toc-number">4.</span> <span class="toc-text">数字音频</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9F%B3%E9%A2%91%E5%8E%8B%E7%BC%A9"><span class="toc-number">4.1.</span> <span class="toc-text">音频压缩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E9%9F%B3%E9%A2%91%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.2.</span> <span class="toc-text">各种常见的音频格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MP3%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.2.1.</span> <span class="toc-text">MP3格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AAC%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.2.2.</span> <span class="toc-text">AAC格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WAV%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.2.3.</span> <span class="toc-text">WAV格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#M4A%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.2.4.</span> <span class="toc-text">M4A格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E6%A0%BC%E5%BC%8F%E4%B8%8EMP3%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">4.3.</span> <span class="toc-text">不同格式与MP3的对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94MP3%E4%B8%8EAAC"><span class="toc-number">4.3.1.</span> <span class="toc-text">对比MP3与AAC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94MP3%E4%B8%8EWAV"><span class="toc-number">4.3.2.</span> <span class="toc-text">对比MP3与WAV</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94MP3%E4%B8%8EM4A"><span class="toc-number">4.3.3.</span> <span class="toc-text">对比MP3与M4A</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">4.4.</span> <span class="toc-text">索引</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/09/hello-world/" title="Hello World">Hello World</a><time datetime="2025-01-09T09:48:40.655Z" title="Created 2025-01-09 17:48:40">2025-01-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/13/gyradio-mg12/" title="2023届广雅广播站调音台使用指南"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic1.zhimg.com/v2-b4c6be038b68bdea35bf071bb4bf6988_r.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2023届广雅广播站调音台使用指南"/></a><div class="content"><a class="title" href="/2023/07/13/gyradio-mg12/" title="2023届广雅广播站调音台使用指南">2023届广雅广播站调音台使用指南</a><time datetime="2023-07-12T16:00:00.000Z" title="Created 2023-07-13 00:00:00">2023-07-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/11/soundandsignal/" title="声音与信号"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://n.sinaimg.cn/sinacn20111/574/w1920h1054/20190217/0b9b-htacqww0463726.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="声音与信号"/></a><div class="content"><a class="title" href="/2023/04/11/soundandsignal/" title="声音与信号">声音与信号</a><time datetime="2023-04-11T14:10:00.000Z" title="Created 2023-04-11 22:10:00">2023-04-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/28/aboutvpn/" title="虚拟专用网络VPN"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2023/06/09/oqNXDr6tIGMBH1Z.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虚拟专用网络VPN"/></a><div class="content"><a class="title" href="/2023/03/28/aboutvpn/" title="虚拟专用网络VPN">虚拟专用网络VPN</a><time datetime="2023-03-28T13:04:24.000Z" title="Created 2023-03-28 21:04:24">2023-03-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/22/%E6%96%B0%E6%98%A5%E7%A5%9D%E7%A6%8F/" title="新春祝福"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bpic.588ku.com/element_origin_min_pic/22/08/15/9fdc277d12fcd7c81dddb1dd727f9383.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="新春祝福"/></a><div class="content"><a class="title" href="/2023/01/22/%E6%96%B0%E6%98%A5%E7%A5%9D%E7%A6%8F/" title="新春祝福">新春祝福</a><time datetime="2023-01-21T16:00:00.000Z" title="Created 2023-01-22 00:00:00">2023-01-22</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:timewasterpro@163.com" title="email"><i class="anzhiyufont anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/timewaster43" title="Github"><i class="anzhiyufont anzhiyufont anzhiyu-icon-github"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2023/06/08/noTN2lJAcktCGbB.jpg" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://space.bilibili.com/433838433" title="Bilibili"><i class="anzhiyufont anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.douyin.com/user/MS4wLjABAAAAkGnZVrSe61hf7zZtZJyptF0E5dw1wPq708q2-Jf-ctzxhGBf8WRJywo3lNaY6zHQ" title="抖音"><i class="anzhiyufont anzhiyufont anzhiyu-icon-tiktok"></i></a></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2022 - 2025 By <a class="footer-bar-link" href="/" title="Benjamin Li" target="_blank">Benjamin Li</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">Articles</div><div class="length-num">13</div></a><a href="/tags/" title="tag"><div class="headline">Tags</div><div class="length-num">8</div></a><a href="/categories/" title="category"><div class="headline">Categories</div><div class="length-num">3</div></a></div><span class="sidebar-menu-item-title">Function</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="Display Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>Display Mode</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.techny.site/" title="Techny"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://www.techny.site/img/logo.webp" alt="Techny"/><span class="back-menu-item-text">Techny</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 碎碎念</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.askbox.ink/h5/uu/MLD3P2VD?uid=c80d8bce6583594564f817bc7d26b9b7"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 提问箱</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 0.88rem;">C++<sup>2</sup></a><a href="/tags/hexo/" style="font-size: 0.88rem;">hexo<sup>2</sup></a><a href="/tags/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/" style="font-size: 0.88rem;">多媒体技术<sup>2</sup></a><a href="/tags/%E6%97%A0%E8%AF%9D%E4%B8%8D%E8%81%8A/" style="font-size: 0.88rem;">无话不聊<sup>1</sup></a><a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 0.88rem;">日常<sup>3</sup></a><a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 0.88rem;">游戏<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" style="font-size: 0.88rem;">网络通信<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="598146484" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/playlist?id=598146484&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2022 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Benjamin Li 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-comment-63rf8p78w-timewaster.vercel.app/',
+      region: 'ap-east-1',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-comment-63rf8p78w-timewaster.vercel.app/',
+      region: 'ap-east-1',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo-comment-63rf8p78w-timewaster.vercel.app/',
+        region: 'ap-east-1',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "Unable to get the data, please make sure the settings are correct."
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
